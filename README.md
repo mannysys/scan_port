@@ -8,17 +8,17 @@ Node.js端口扫描，使用net模块
 一、
 net 模块包含如下内容：
 
-Class: net.Server  \n\r
-Class: net.Socket   \n\r
-net.connect(options[, connectListener])  \n\r
-net.connect(path[, connectListener]) \n\r
-net.connect(port[, host][, connectListener]) \n\r
-net.createConnection(options[, connectListener])\n\r
-net.createConnection(path[, connectListener])\n\r
-net.createConnection(port[, host][, connectListener]) \n\r
-net.createServer([options][, connectionListener])  \n\r
-net.isIP() \n\r
-net.isIPv4() \n\r
+Class: net.Server
+Class: net.Socket
+net.connect(options[, connectListener])
+net.connect(path[, connectListener])
+net.connect(port[, host][, connectListener])
+net.createConnection(options[, connectListener])
+net.createConnection(path[, connectListener])
+net.createConnection(port[, host][, connectListener])
+net.createServer([options][, connectionListener])
+net.isIP()
+net.isIPv4()
 net.isIPv6()
 net.createServer()用于创建socket服务，返回net.Server的实例。net.connection()和net.createConnection()是工厂函数，返回net.Socket实例并自动连接到传入参数指定的socket。net.isIP()、net.isIPv4()及net.isIPv6()用于检测IP。如：
 
