@@ -60,8 +60,11 @@ client.on('end', () => {
 新建scanPorts.js文件，代码如下：
 'use strict';
 
- // 引入 net 模块const net = require('net');
-// 进度条模块// 此模块需要安装：npm install progress// 用于显示扫描端口完成进度const ProgressBar = require('progress');
+// 引入 net 模块
+const net = require('net');
+// 进度条模块此模块需要安装：npm install progress
+// 用于显示扫描端口完成进度
+const ProgressBar = require('progress');
 
  /**
   * 端口扫描函数
@@ -70,7 +73,9 @@ client.on('end', () => {
   * @param start {Number} 起始端口
   * @param end {Number} 结束端口
   * @return {Promise} 返回一个Promise对象
-  */function checkPorts(host, start, end) {
+  */
+
+  function checkPorts(host, start, end) {
     // 返回Promise
     return new Promise((resolve, reject) => {
         let counts = end - start + 1; // 需要扫描的IP数量
@@ -134,7 +139,9 @@ client.on('end', () => {
  * @param start {Number} 起始端口
  * @param end {Number} 结束端口
  * @param callback {function} 回调函数
- */module.exports = (host, start, end, callback) => {
+ */
+
+ module.exports = (host, start, end, callback) => {
     // 检测参数
     // 如果只传了三个参数，并且end是一个函数
     // 那么自动作参数调换
