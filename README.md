@@ -1,13 +1,8 @@
 # scan_port
 Node.js端口扫描，使用net模块
 
-一、简介
-
-编写一个Node.js端口扫描模块，主要用到Node.js的net模块，同时，我们会使用一些ES6的新语法，以前的一些Node.js课程已经介绍过一些ES6语法，这个实验主要会用到Promise。
-
-一、
-net 模块包含如下内容：
-
+一、简介编写一个Node.js端口扫描模块，主要用到Node.js的net模块，同时，我们会使用一些ES6的新语法，以前的一些Node.js课程已经介绍过一些ES6语法，这个实验主要会用到Promise。
+二、net 模块net 模块包含如下内容：
 Class: net.Server
 Class: net.Socket
 net.connect(options[, connectListener])
@@ -20,11 +15,9 @@ net.createServer([options][, connectionListener])
 net.isIP()
 net.isIPv4()
 net.isIPv6()
+
 net.createServer()用于创建socket服务，返回net.Server的实例。net.connection()和net.createConnection()是工厂函数，返回net.Socket实例并自动连接到传入参数指定的socket。net.isIP()、net.isIPv4()及net.isIPv6()用于检测IP。如：
-
-示例
 创建一个socket服务：
-
 // demoServer.js
 
 const net = require('net');
@@ -44,8 +37,8 @@ server.on('error', (err) => {
 server.listen(8124, () => {
     console.log('server bound');
 });
-连接上面创建的socket服务：
 
+连接上面创建的socket服务：
 // demoClient.js
 
 const net = require('net');
@@ -63,21 +56,12 @@ client.on('end', () => {
     console.log('disconnected from server');
 });
 
-
-三、编写端口扫描模块
-
-既然是端口扫描，我们就不需要创建socket服务了，直接去连接需要扫描的端口，看能否连接上，能连上说明此端口是打开的，否则此端口没有打开。
-
+三、编写端口扫描模块既然是端口扫描，我们就不需要创建socket服务了，直接去连接需要扫描的端口，看能否连接上，能连上说明此端口是打开的，否则此端口没有打开。
 新建scanPorts.js文件，代码如下：
-
 'use strict';
 
- // 引入 net 模块
-const net = require('net');
-// 进度条模块
-// 此模块需要安装：npm install progress
-// 用于显示扫描端口完成进度
-const ProgressBar = require('progress');
+ // 引入 net 模块const net = require('net');
+// 进度条模块// 此模块需要安装：npm install progress// 用于显示扫描端口完成进度const ProgressBar = require('progress');
 
  /**
   * 端口扫描函数
@@ -86,8 +70,7 @@ const ProgressBar = require('progress');
   * @param start {Number} 起始端口
   * @param end {Number} 结束端口
   * @return {Promise} 返回一个Promise对象
-  */
-function checkPorts(host, start, end) {
+  */function checkPorts(host, start, end) {
     // 返回Promise
     return new Promise((resolve, reject) => {
         let counts = end - start + 1; // 需要扫描的IP数量
@@ -151,8 +134,7 @@ function checkPorts(host, start, end) {
  * @param start {Number} 起始端口
  * @param end {Number} 结束端口
  * @param callback {function} 回调函数
- */
-module.exports = (host, start, end, callback) => {
+ */module.exports = (host, start, end, callback) => {
     // 检测参数
     // 如果只传了三个参数，并且end是一个函数
     // 那么自动作参数调换
@@ -168,10 +150,9 @@ module.exports = (host, start, end, callback) => {
         console.log(err);
     });
 }
+
 使用Promise可以避免多层回调函数，使得代码更加清晰，非常方便。
-
 下面我们来测试一下吧，创建test.js文件：
-
 'use strict';
 
 const scanPorts = require('./scanPorts');
@@ -179,9 +160,9 @@ const scanPorts = require('./scanPorts');
 scanPorts('127.0.0.1', 1, 65535, (ports) => {
     console.log('open ports: ', ports);
 });
+
 运行代码：
-
 $ node test.js
-可以看到终端打印出了开放的端口。
 
+可以看到终端打印出了开放的端口。
 一个简单的端口扫描程序就实现了。
