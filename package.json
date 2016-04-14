@@ -1,0 +1,22 @@
+{
+  "name": "scan_port",
+  "version": "1.0.0",
+  "description": "Node.js端口扫描，使用net模块",
+  "main": "netClient.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mannysys/scan_port.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mannysys/scan_port/issues"
+  },
+  "homepage": "https://github.com/mannysys/scan_port#readme",
+  "dependencies": {
+    "progress": "^1.1.8"
+  }
+}
